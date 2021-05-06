@@ -15,7 +15,9 @@ func _ready():
 func _physics_process(delta):
 	if Input.is_action_pressed("move_click"):
 		target = get_global_mouse_position()
-		#sprite.look_at(target)
+	if Input.is_action_pressed("stop_moving"):
+		target = position
+		line2d.set_point_position(1, Vector2(target.x - position.x, target.y - position.y))
 	#not currently working :(
 	if Input.is_action_just_released("scroll_zoom_in") and camera.zoom > 0.5:
 		camera.zoom.x -= 0.01
